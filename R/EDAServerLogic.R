@@ -2033,7 +2033,8 @@
               scale = input$scaleHeatmap,
               cluster = input$clusterHeatmap,
               show_names = input$show_namesHeatmap,
-              NumGenes = input$NumGenesHeatmap),
+              NumGenes = input$NumGenesHeatmap,
+              main = "Expression heatmap pre-normalization"),
             supervise = TRUE ,error = getOption("callr.error", "error"))
         }
         , error = function(e) {
@@ -2095,7 +2096,8 @@
               cluster = input$clusterHeatmap,
               scale = input$scaleHeatmap,
               show_names = input$show_namesHeatmap,
-              NumGenes = input$NumGenesHeatmap),
+              NumGenes = input$NumGenesHeatmap,
+              main = "Expression heatmap pre-normalization"),
             supervise = TRUE ,error = getOption("callr.error", "error"))
         }
         , error = function(e) {
@@ -2164,7 +2166,8 @@
               scale = input$scaleHeatmap,
               cluster = input$clusterHeatmap,
               show_names = input$show_namesHeatmap,
-              NumGenes = input$NumGenesHeatmap),
+              NumGenes = input$NumGenesHeatmap,
+              main = "Expression heatmap post-normalization"),
             supervise = TRUE ,error = getOption("callr.error", "error"))
         }
         , error = function(e) {
@@ -2226,7 +2229,8 @@
               cluster = input$clusterHeatmap,
               scale = input$scaleHeatmap,
               show_names = input$show_namesHeatmap,
-              NumGenes = input$NumGenesHeatmap),
+              NumGenes = input$NumGenesHeatmap,
+              main = "Expression heatmap post-normalization"),
             supervise = TRUE ,error = getOption("callr.error", "error"))
         }
         , error = function(e) {
@@ -2430,7 +2434,8 @@
               scale = input$scaleCorrPlot,
               cluster = input$clusterCorrPlot,
               show_names = input$show_namesCorrPlot,
-              NumGenes = input$NumGenesCorrPlot),
+              NumGenes = input$NumGenesCorrPlot,
+              main = "Correlation heatmap pre-normalization"),
             supervise = TRUE ,error = getOption("callr.error", "error"))
         }
         , error = function(e) {
@@ -2496,7 +2501,8 @@
               scale = input$scaleCorrPlot,
               cluster = input$clusterCorrPlot,
               show_names = input$show_namesCorrPlot,
-              NumGenes = input$NumGenesCorrPlot),
+              NumGenes = input$NumGenesCorrPlot,
+              main = "Correlation heatmap pre-normalization"),
             supervise = TRUE ,error = getOption("callr.error", "error"))
         }
         , error = function(e) {
@@ -2568,7 +2574,8 @@
               scale = input$scaleCorrPlot,
               cluster = input$clusterCorrPlot,
               show_names = input$show_namesCorrPlot,
-              NumGenes = input$NumGenesCorrPlot),
+              NumGenes = input$NumGenesCorrPlot,
+              main = "Correlation heatmap post-normalization"),
             supervise = TRUE ,error = getOption("callr.error", "error"))
         }
         , error = function(e) {
@@ -2633,7 +2640,8 @@
               scale = input$scaleCorrPlot,
               cluster = input$clusterCorrPlot,
               show_names = input$show_namesCorrPlot,
-              NumGenes = input$NumGenesCorrPlot),
+              NumGenes = input$NumGenesCorrPlot,
+              main = "Correlation heatmap post-normalization"),
             supervise = TRUE ,error = getOption("callr.error", "error"))
         }
         , error = function(e) {

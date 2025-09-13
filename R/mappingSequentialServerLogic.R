@@ -220,12 +220,12 @@ mappingSequentialServerLogic <- function(id) {
                     outBam1 = firstOutputPath,
                     outBam2 = secondOutputPath,
                     threads = base::as.integer(input$MappingThreadsSequential),
-                    outFormat = base::as.character(input$MappingFormatSequential),
+                    # outFormat = base::as.character(input$MappingFormatSequential),
                     phredScore = base::as.integer(input$MappingSeqPhredScore),
                     maxExtractedSubreads = base::as.integer(input$MappingNumberSubreadsSequential),
                     consensusVote = base::as.integer(input$MappingConsensusThresholdSequential),
                     mismatchMax = base::as.integer(input$MappingMaxMismatchSequential),
-                    uniqueOnly = base::as.logical(input$MappingUniqueOnlySequential),
+                    # uniqueOnly = base::as.logical(input$MappingUniqueOnlySequential),
                     maxMultiMapped = base::as.integer(input$MappingMultiMapMaxSequential),
                     indelLength = base::as.integer(input$MappingIndelLengthSequential),
                     fragmentMinLength = base::as.integer(input$MappingMinFragLengthSequential),
@@ -255,7 +255,7 @@ mappingSequentialServerLogic <- function(id) {
                 output$MappingSequentialProcessstatus <- shiny::renderPrint({
                     base::cat("Genome mapping was killed!")
                 })
-                shiny::showNotification(base::paste("Genome indexing process has been killed!"),
+                shiny::showNotification(base::paste("Genome mapping process has been killed!"),
                                  duration = 10, type = "warning")
             }
         })

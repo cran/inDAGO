@@ -14,6 +14,7 @@
 #' @param cluster Character. One of "both", "row", "column", or "none" to specify clustering.
 #' @param show_names Character. One of "both", "row", "column", or "none" to show row/col names.
 #' @param NumGenes Integer. Number of top-variance genes to include in the heatmap.
+#' @param main Character. The plot title
 #'
 #' @return A "pheatmap" object containing the heatmap and clustering information.
 #'
@@ -24,7 +25,7 @@
 #' 4. Determine clustering and name-display options from "cluster" and "show_names".
 #' 5. Render the heatmap with "pheatmap::pheatmap()", saving to a temporary file to suppress autosave.
 #'
-HeatmapExp <- function(x, ColorPanel, scale, cutree_rows, cutree_cols, cluster, show_names, NumGenes){
+HeatmapExp <- function(x, ColorPanel, scale, cutree_rows, cutree_cols, cluster, show_names, NumGenes, main){
 
   # 'x' is the logcounts matrix from edgeR::cpm
   # Calculate the variance for each gene across samples
@@ -83,13 +84,14 @@ HeatmapExp <- function(x, ColorPanel, scale, cutree_rows, cutree_cols, cluster, 
     show_rownames = show_rownames,  # Whether to display row names (genes)
     show_colnames = show_colnames,  # Whether to display column names (samples)
     fontsize_number = 5,            # Font size for the numbers in the heatmap
-    main = "Expression heatmap",    # Title of the heatmap
+    main = main,                    # Title of the heatmap
     color = col,                    # Color palette for the heatmap
     angle_col = 45,                 # Angle of the column names (samples) on the X-axis
     fontsize = 8,                   # Font size for text in the heatmap
-    filename = RemoveAutosave       # file path where to save the picture
+    filename = RemoveAutosave,      # file path where to save the picture
   )
   unlink(RemoveAutosave)
+
 
   return(plot)
 }

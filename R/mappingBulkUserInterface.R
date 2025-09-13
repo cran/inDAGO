@@ -106,7 +106,7 @@ mappingBulkUserInterface <- function(id) {
                         ))), #close fluidrow
                         shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                         shiny::sliderInput(inputId = nsMapBulk("MappingThreadsBulk"),
-                                                                           label = "Number of subprocesses",
+                                                                           label = "Number_of_subprocesses",
                                                                            value = 2,
                                                                            min = 1,
                                                                            max = as.integer(parallel::detectCores(logical = TRUE)),
@@ -120,7 +120,7 @@ mappingBulkUserInterface <- function(id) {
                         ))), #close fluidrow
                         shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                         shiny::radioButtons(inputId = nsMapBulk("MappingFormatBulk"),
-                                                                            label = "Output format",
+                                                                            label = "Output_format",
                                                                             choices = c("BAM", "SAM"), selected = "BAM"),
                                                                bslib::tooltip(
                                                                    bsicons::bs_icon("question-circle"),
@@ -131,7 +131,7 @@ mappingBulkUserInterface <- function(id) {
                         ))), #close fluidrow
                         shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                shiny::radioButtons(inputId = nsMapBulk("MappingBulkPhredScore"),
-                                                                            label = "Phred score",
+                                                                            label = "Phred_score",
                                                                             choices = c(33, 64), selected = 33),
                                                                bslib::tooltip(
                                                                    bsicons::bs_icon("question-circle"),
@@ -142,7 +142,7 @@ mappingBulkUserInterface <- function(id) {
                         ))), #close fluidrow
                         shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                         shiny::numericInput(inputId = nsMapBulk("MappingNumberSubreadsBulk"),
-                                                                            label = "Number of subreads", value = 14, step = 1),
+                                                                            label = "Number_of_subreads", value = 14, min = 1, step = 1),
                                                                bslib::tooltip(
                                                                    bsicons::bs_icon("question-circle"),
                                                                    "Specify the number of subreads (short reads for optimal map location) to extract for each input read.
@@ -153,7 +153,7 @@ mappingBulkUserInterface <- function(id) {
                         ))), #close fluidrow
                         shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                         shiny::numericInput(inputId = nsMapBulk("MappingConsensusThresholdBulk"),
-                                                                            label = "Consensus threshold", value = 1, step = 1),
+                                                                            label = "Consensus_threshold", value = 1, min = 1, step = 1),
                                                                bslib::tooltip(
                                                                    bsicons::bs_icon("question-circle"),
                                                                    "Specify the consensus threshold, which defines the minimum number of consensus subreads required to report a hit. Consensus subreads are those that agree on the same location in the reference genome for the read (seed-and-vote strategy).
@@ -164,7 +164,7 @@ mappingBulkUserInterface <- function(id) {
                         ))), #close fluidrow
                         shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                shiny::numericInput(inputId = nsMapBulk("MappingMaxMismatchBulk"),
-                                                                            label = "Mismatch number", value = 3, step = 1),
+                                                                            label = "Mismatch_number", value = 3, min = 0, step = 1),
                                                                bslib::tooltip(
                                                                    bsicons::bs_icon("question-circle"),
                                                                    "Specify the maximum number of mismatches allowed in the alignment. Mismatches in soft-clipped regions are not counted.
@@ -172,20 +172,20 @@ mappingBulkUserInterface <- function(id) {
                                                                    placement = "right"
                                                                )
                         ))), #close fluidrow
-                        shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
-                                                               shiny::radioButtons(inputId = nsMapBulk("MappingUniqueOnlyBulk"),
-                                                                            label = "Exclude reads that map to multiple locations",
-                                                                            choices = c("TRUE", "FALSE"), selected = "FALSE"),
-                                                               bslib::tooltip(
-                                                                   bsicons::bs_icon("question-circle"),
-                                                                   "Specify if only uniquely mapped reads should be included in the alignment file (setting TRUE).
-                                                                           'FALSE' by default.",
-                                                                   placement = "right"
-                                                               )
-                        ))), #close fluidrow
+                        # shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
+                        #                                        shiny::radioButtons(inputId = nsMapBulk("MappingUniqueOnlyBulk"),
+                        #                                                     label = "Discard_multi-mapped",
+                        #                                                     choices = c("TRUE", "FALSE"), selected = "FALSE"),
+                        #                                        bslib::tooltip(
+                        #                                            bsicons::bs_icon("question-circle"),
+                        #                                            "Specify if only uniquely mapped reads should be included in the alignment file (setting TRUE).
+                        #                                                    'FALSE' by default.",
+                        #                                            placement = "right"
+                        #                                        )
+                        # ))), #close fluidrow
                         shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                         shiny::numericInput(inputId = nsMapBulk("MappingMultiMapMaxBulk"),
-                                                                            label = "Max multi-mapped reads", value = 1, step = 1),
+                                                                            label = "Max_multi-mapped_reads", min = 1, max = 16, value = 1, step = 1),
                                                                bslib::tooltip(
                                                                    bsicons::bs_icon("question-circle"),
                                                                    "When both uniquely mapped and multimapped reads are included, set the maximum number of equally best mapping locations per read.
@@ -195,7 +195,7 @@ mappingBulkUserInterface <- function(id) {
                         ))), #close fluidrow
                         shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                         shiny::numericInput(inputId = nsMapBulk("MappingIndelLengthBulk"),
-                                                                            label = "Indel length", value = 5, max = 200, step = 1),
+                                                                            label = "Indel_length", value = 5, min = 0, max = 200, step = 1),
                                                                bslib::tooltip(
                                                                    bsicons::bs_icon("question-circle"),
                                                                    "Specify the maximum number of insertions/deletions (indels) allowed in the alignment.
@@ -205,7 +205,7 @@ mappingBulkUserInterface <- function(id) {
                         ))), #close fluidrow
                         shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                         shiny::numericInput(inputId = nsMapBulk("MappingMinFragLengthBulk"),
-                                                                            label = "Min fragment length", value = 50, step = 1),
+                                                                            label = "Min_fragment_length", value = 50, min = 1, step = 1),
                                                                bslib::tooltip(
                                                                    bsicons::bs_icon("question-circle"),
                                                                    "Set the minimum fragment length as a numeric value.
@@ -215,7 +215,7 @@ mappingBulkUserInterface <- function(id) {
                         ))), #close fluidrow
                         shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                         shiny::numericInput(inputId = nsMapBulk("MappingMaxFragLengthBulk"),
-                                                                            label = "Max fragment length", value = 600, step = 1),
+                                                                            label = "Max_fragment_length", value = 600, min = 1, step = 1),
                                                                bslib::tooltip(
                                                                    bsicons::bs_icon("question-circle"),
                                                                    "Set the maximum fragment length as a numeric value.
@@ -225,7 +225,7 @@ mappingBulkUserInterface <- function(id) {
                         ))), #close fluidrow
                         shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                shiny::radioButtons(inputId = nsMapBulk("MappingPeOrientationBulk"),
-                                                                            label = "Paired-ends orientation",
+                                                                            label = "Paired-ends_orientation",
                                                                             choices = c("fr", "rf", "ff"), selected = "fr"),
                                                                bslib::tooltip(
                                                                    bsicons::bs_icon("question-circle"),
@@ -235,7 +235,7 @@ mappingBulkUserInterface <- function(id) {
                         ))), #close fluidrow
                         shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                shiny::radioButtons(inputId = nsMapBulk("MappingKeepOrderBulk"),
-                                                                            label = "Keep the order of FASTQ files (applies only for BAM output)",
+                                                                            label = "Keep_order",
                                                                             choices = c("TRUE", "FALSE"), selected = "FALSE"),
                                                                bslib::tooltip(
                                                                    bsicons::bs_icon("question-circle"),
@@ -247,7 +247,7 @@ mappingBulkUserInterface <- function(id) {
                         ))), #close fluidrow
                         shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                shiny::radioButtons(inputId = nsMapBulk("MappingSortByCoordinatesBulk"),
-                                                                            label = "Sort read by their mapping locations (applies only for BAM output)",
+                                                                            label = "Sort_read",
                                                                             choices = c("TRUE", "FALSE"), selected = "FALSE"),
                                                                bslib::tooltip(
                                                                    bsicons::bs_icon("question-circle"),
@@ -260,7 +260,7 @@ mappingBulkUserInterface <- function(id) {
                         ))), #close fluidrow
                         shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                shiny::radioButtons(inputId = nsMapBulk("MappingAllJunctionsBulk"),
-                                                                            label = "Reporting all splice junctions",
+                                                                            label = "Reporting_splice_junctions",
                                                                             choices = c("TRUE", "FALSE"), selected = "FALSE"),
                                                                bslib::tooltip(
                                                                    bsicons::bs_icon("question-circle"),

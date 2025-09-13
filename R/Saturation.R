@@ -191,9 +191,9 @@ Saturation <- function(matrix, method, max_reads, palette){
 
     # Customize the plot's appearance
     ggplot2::theme(
-      plot.title = ggplot2::element_text(color = "black", size = 20, face = "bold.italic", hjust = 0.5), # Centered bold title
-      axis.title.x = ggplot2::element_text(color = "black", size = 14, face = "bold"), # Bold x-axis title
-      axis.title.y = ggplot2::element_text(color = "black", size = 14, face = "bold")  # Bold y-axis title
+      plot.title = ggplot2::element_text(hjust = 0.5, face = "bold"), # Centered bold title
+      axis.title.x = ggplot2::element_text(color = "black", size = 12), # Bold x-axis title
+      axis.title.y = ggplot2::element_text(color = "black", size = 12)  # Bold y-axis title
     )
   return(p)
 }

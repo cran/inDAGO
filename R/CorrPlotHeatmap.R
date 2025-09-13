@@ -17,6 +17,7 @@
 #' @param cluster Character. Clustering mode: one of "both", "row", "column", or "none".
 #' @param show_names Character. One of "both", "row", "column", or "none" to display row/column labels.
 #' @param NumGenes Integer. Number of top-variance genes to include in the correlation.
+#' @param main Character. The plot title
 #'
 #' @return A "pheatmap" object representing the correlation heatmap with clustering.
 #'
@@ -28,7 +29,7 @@
 #' 5. Render the heatmap with "pheatmap::pheatmap()", passing in custom distance, color,
 #'    clustering, and "display" number settings, saving to a temporary file to suppress autosave.
 #'
-CorrPlotHeatmap <- function(x, scale, Color, type, display, round_number, cutree_rows, cutree_cols, cluster, show_names, NumGenes){
+CorrPlotHeatmap <- function(x, scale, Color, type, display, round_number, cutree_rows, cutree_cols, cluster, show_names, NumGenes, main){
 
   # 'x' is the logcounts matrix from edgeR::cpm
   # Generate a color palette for the heatmap using the specified Color
@@ -102,7 +103,7 @@ CorrPlotHeatmap <- function(x, scale, Color, type, display, round_number, cutree
     display_numbers = round(display_numbers, round_number),  # Round and display numbers
     fontsize_number = 5,                     # Font size for displayed numbers
     scale = scale,                           # Scaling method for the heatmap
-    main = "Correlation heatmap",            # Main title of the heatmap
+    main = main,                             # Main title of the heatmap
     angle_col = 45,                          # Angle for column names
     fontsize = 8,                            # Font size for axis labels
     filename = RemoveAutosave                # file path where to save the picture

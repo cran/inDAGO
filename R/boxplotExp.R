@@ -71,9 +71,10 @@ boxplotExp <- function(x, y, palette, main, selectOrder){
 
     # Customize the theme elements (titles, axis labels, and X-axis text)
     ggplot2::theme(
-      plot.title = ggplot2::element_text(color = "black", size = 20, face = "bold.italic", hjust = 0.5),
-      axis.title.x = ggplot2::element_text(color = "black", size = 14, face = "bold"),
-      axis.title.y = ggplot2::element_text(color = "black", size = 14, face = "bold"),
+      # Center and bold the title.
+      plot.title = ggplot2::element_text(hjust = 0.5, face = "bold"),
+      axis.title.x = ggplot2::element_text(color = "black", size = 12),
+      axis.title.y = ggplot2::element_text(color = "black", size = 12),
       axis.text.x = ggplot2::element_text(
         angle = 90,   # Rotate the X-axis labels by 90 degrees
         vjust = 0.5,  # Adjust vertical justification

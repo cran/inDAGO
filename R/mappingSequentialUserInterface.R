@@ -132,7 +132,7 @@ mappingSequentialUserInterface <- function(id) {
                                                                )
                         ))), #close fluidrow
                         shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
-                                                                                    shiny::sliderInput(inputId = nsMapSeq("MappingThreadsSequential"), label = "Number of subprocesses",
+                                                                                    shiny::sliderInput(inputId = nsMapSeq("MappingThreadsSequential"), label = "Number_of_subprocesses",
                                                                            value = 2,
                                                                            min = 1,
                                                                            max = as.integer(parallel::detectCores(logical = TRUE)),
@@ -144,18 +144,18 @@ mappingSequentialUserInterface <- function(id) {
                                                                    placement = "right"
                                                                )
                         ))), #close fluidrow
+                        # shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
+                        #                                        shiny::radioButtons(inputId = nsMapSeq("MappingFormatSequential"), label = "Output_format",
+                        #                                                     choices = c("BAM", "SAM"), selected = "BAM"),
+                        #                                        bslib::tooltip(
+                        #                                            bsicons::bs_icon("question-circle"),
+                        #                                            "Choose whether to generate a compressed binary alignment file (BAM) or an uncompressed output (SAM).
+                        #                                                    'BAM' by default.",
+                        #                                            placement = "right"
+                        #                                        )
+                        # ))), #close fluidrow
                         shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
-                                                               shiny::radioButtons(inputId = nsMapSeq("MappingFormatSequential"), label = "Output format",
-                                                                            choices = c("BAM", "SAM"), selected = "BAM"),
-                                                               bslib::tooltip(
-                                                                   bsicons::bs_icon("question-circle"),
-                                                                   "Choose whether to generate a compressed binary alignment file (BAM) or an uncompressed output (SAM).
-                                                                           'BAM' by default.",
-                                                                   placement = "right"
-                                                               )
-                        ))), #close fluidrow
-                        shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
-                                                               shiny::radioButtons(inputId = nsMapSeq("MappingSeqPhredScore"), label = "Phred score",
+                                                               shiny::radioButtons(inputId = nsMapSeq("MappingSeqPhredScore"), label = "Phred_score",
                                                                             choices = c(33, 64), selected = 33),
                                                                bslib::tooltip(
                                                                    bsicons::bs_icon("question-circle"),
@@ -166,7 +166,7 @@ mappingSequentialUserInterface <- function(id) {
                         ))), #close fluidrow
                         shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                shiny::numericInput(inputId = nsMapSeq("MappingNumberSubreadsSequential"),
-                                                                            label = "Number of subreads", value = 14, step = 1),
+                                                                            label = "Number_of_subreads", value = 14, min = 1, step = 1),
                                                                bslib::tooltip(
                                                                    bsicons::bs_icon("question-circle"),
                                                                    "Specify the number of subreads (short reads for optimal map location) to extract for each input read.
@@ -177,7 +177,7 @@ mappingSequentialUserInterface <- function(id) {
                         ))), #close fluidrow
                         shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                shiny::numericInput(inputId = nsMapSeq("MappingConsensusThresholdSequential"),
-                                                                            label = "Consensus threshold", value = 1, step = 1),
+                                                                            label = "Consensus_threshold", value = 1, min = 1, step = 1),
                                                                bslib::tooltip(
                                                                    bsicons::bs_icon("question-circle"),
                                                                    "Specify the consensus threshold, which defines the minimum number of consensus subreads required to report a hit. Consensus subreads are those that agree on the same location in the reference genome for the read.
@@ -188,7 +188,7 @@ mappingSequentialUserInterface <- function(id) {
                         ))), #close fluidrow
                         shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                shiny::numericInput(inputId = nsMapSeq("MappingMaxMismatchSequential"),
-                                                                            label = "Mismatch number", value = 3, step = 1),
+                                                                            label = "Mismatch_number", value = 3, min = 0, step = 1),
                                                                bslib::tooltip(
                                                                    bsicons::bs_icon("question-circle"),
                                                                    "Specify the maximum number of mismatches allowed in the alignment. Mismatches in soft-clipped regions are not counted.
@@ -196,19 +196,19 @@ mappingSequentialUserInterface <- function(id) {
                                                                    placement = "right"
                                                                )
                         ))), #close fluidrow
-                        shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
-                                                               shiny::radioButtons(inputId = nsMapSeq("MappingUniqueOnlySequential"), label = "Exclude reads that map to multiple locations",
-                                                                            choices = c("TRUE", "FALSE"), selected = "FALSE"),
-                                                               bslib::tooltip(
-                                                                   bsicons::bs_icon("question-circle"),
-                                                                   "Specify if only uniquely mapped reads should be included in the alignment file (setting TRUE).
-                                                                           'FALSE' by default.",
-                                                                   placement = "right"
-                                                               )
-                        ))), #close fluidrow
+                        # shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
+                        #                                        shiny::radioButtons(inputId = nsMapSeq("MappingUniqueOnlySequential"), label = "Discard_multi-mapped",
+                        #                                                     choices = c("TRUE", "FALSE"), selected = "FALSE"),
+                        #                                        bslib::tooltip(
+                        #                                            bsicons::bs_icon("question-circle"),
+                        #                                            "Specify if only uniquely mapped reads should be included in the alignment file (setting TRUE).
+                        #                                                    'FALSE' by default.",
+                        #                                            placement = "right"
+                        #                                        )
+                        # ))), #close fluidrow
                         shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                shiny::numericInput(inputId = nsMapSeq("MappingMultiMapMaxSequential"),
-                                                                            label = "Max multi-mapped reads", value = 1, step = 1),
+                                                                            label = "Max_multi-mapped_reads", value = 1, min = 1, max = 16, step = 1),
                                                                bslib::tooltip(
                                                                    bsicons::bs_icon("question-circle"),
                                                                    "When both uniquely mapped and multimapped reads are included, set the maximum number of equally best mapping locations per read.
@@ -218,7 +218,7 @@ mappingSequentialUserInterface <- function(id) {
                         ))), #close fluidrow
                         shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                shiny::numericInput(inputId = nsMapSeq("MappingIndelLengthSequential"),
-                                                                            label = "Indel length", value = 5, max = 200, step = 1),
+                                                                            label = "Indel_length", value = 5, min = 0, max = 200, step = 1),
                                                                bslib::tooltip(
                                                                    bsicons::bs_icon("question-circle"),
                                                                    "Specify the maximum number of insertions/deletions (indels) permitted in the alignment.
@@ -228,7 +228,7 @@ mappingSequentialUserInterface <- function(id) {
                         ))), #close fluidrow
                         shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                shiny::numericInput(inputId = nsMapSeq("MappingMinFragLengthSequential"),
-                                                                            label = "Min fragment length", value = 50, step = 1),
+                                                                            label = "Min_fragment_length", value = 50, min = 1, step = 1),
                                                                bslib::tooltip(
                                                                    bsicons::bs_icon("question-circle"),
                                                                    "Set the minimum fragment length as a numeric value.
@@ -238,7 +238,7 @@ mappingSequentialUserInterface <- function(id) {
                         ))), #close fluidrow
                         shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                shiny::numericInput(inputId = nsMapSeq("MappingMaxFragLengthSequential"),
-                                                                            label = "Max fragment length", value = 600, step = 1),
+                                                                            label = "Max_fragment_length", value = 600, min = 1, step = 1),
                                                                bslib::tooltip(
                                                                    bsicons::bs_icon("question-circle"),
                                                                    "Set the minimum fragment length as a numeric value.
@@ -248,7 +248,7 @@ mappingSequentialUserInterface <- function(id) {
                         ))), #close fluidrow
                         shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                shiny::radioButtons(inputId = nsMapSeq("MappingPeOrientationSequential"),
-                                                                            label = "Orientation of paired-end reads",
+                                                                            label = "Paired-ends_orientation",
                                                                             choices = c("fr", "rf", "ff"), selected = "fr"),
                                                                bslib::tooltip(
                                                                    bsicons::bs_icon("question-circle"),
@@ -258,7 +258,7 @@ mappingSequentialUserInterface <- function(id) {
                         ))), #close fluidrow
                         shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                shiny::radioButtons(inputId = nsMapSeq("MappingKeepOrderSequential"),
-                                                                            label = "Keep the order of FASTQ files (applies only for BAM output)",
+                                                                            label = "Keep_order",
                                                                             choices = c("TRUE", "FALSE"), selected = "FALSE"),
                                                                bslib::tooltip(
                                                                    bsicons::bs_icon("question-circle"),
@@ -269,7 +269,7 @@ mappingSequentialUserInterface <- function(id) {
                                                                )
                         ))), #close fluidrow
                         shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
-                                                               shiny::radioButtons(inputId = nsMapSeq("MappingSortByCoordinatesSequential"), label = "Sort read by their mapping locations (applies only for BAM output)",
+                                                               shiny::radioButtons(inputId = nsMapSeq("MappingSortByCoordinatesSequential"), label = "Sort_read",
                                                                             choices = c("TRUE", "FALSE"), selected = "FALSE"),
                                                                bslib::tooltip(
                                                                    bsicons::bs_icon("question-circle"),
@@ -281,7 +281,7 @@ mappingSequentialUserInterface <- function(id) {
                                                                )
                         ))), #close fluidrow
                         shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
-                                                               shiny::radioButtons(inputId = nsMapSeq("MappingAllJunctionsSequential"), label = "Reporting all splice junctions",
+                                                               shiny::radioButtons(inputId = nsMapSeq("MappingAllJunctionsSequential"), label = "Reporting_splice_junctions",
                                                                             choices = c("TRUE", "FALSE"), selected = "FALSE"),
                                                                bslib::tooltip(
                                                                    bsicons::bs_icon("question-circle"),
@@ -292,7 +292,7 @@ mappingSequentialUserInterface <- function(id) {
                         ))), #close fluidrow
                         shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                shiny::numericInput(inputId = nsMapSeq("SubsetBam"),
-                                                                            label = "Subset the aligned reads",
+                                                                            label = "Subset_aligned_reads",
                                                                             value = 1000000, min = 1, step = 1),
                                                                bslib::tooltip(
                                                                    bsicons::bs_icon("question-circle"),

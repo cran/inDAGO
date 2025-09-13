@@ -382,7 +382,8 @@ SummarizationUserInterface <- function(id) {
                 ),
                 bslib::tooltip(
                   bsicons::bs_icon("question-circle"),
-                  "If set to 'TRUE', only primary alignments in the dataset will be counted, regardless of whether they originate from multi-mapping reads (i.e., count_multi_mapping_reads is ignored). Primary and secondary alignments represent the mapping results for the two segments of the same read separated by a breakpoint (typically due to structural variant events). Primary and secondary alignments are identified using bit 0x100 in the Flag field of SAM/BAM files. 'FALSE' by default.",
+                  "If set to 'TRUE', only primary alignments in the dataset will be counted, regardless of whether they originate from multi-mapping reads (i.e., count_multi_mapping_reads is ignored). Primary and secondary alignments represent the equally-best mapping locations for the same read. s primary or secondary is determined by using bit 0x100 in the FLAG field of the alignment
+record. 'FALSE' by default.",
                   placement = "right"
                 )
               )

@@ -4,7 +4,7 @@
 \alias{CorrPlotHeatmaply}
 \title{CorrPlotHeatmaply}
 \usage{
-CorrPlotHeatmaply(x, Color, type, cluster, scale, show_names, NumGenes)
+CorrPlotHeatmaply(x, Color, type, cluster, scale, show_names, NumGenes, main)
 }
 \arguments{
 \item{x}{Numeric matrix of log-CPM values (genes × samples), e.g., from "edgeR::cpm()".}
@@ -20,6 +20,8 @@ CorrPlotHeatmaply(x, Color, type, cluster, scale, show_names, NumGenes)
 \item{show_names}{Character. One of "both", "row", "column", or "none" to display row/column labels.}
 
 \item{NumGenes}{Integer. Number of top-variance genes to include in the correlation.}
+
+\item{main}{Character. The plot title}
 }
 \value{
 A Plotly object (heatmaply) representing the interactive correlation heatmap.

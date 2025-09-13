@@ -5,49 +5,14 @@
 #'
 #' This function allows to launch inDAGO Shiny interface.
 
-#' @importFrom BiocGenerics end
-#' @importFrom BiocGenerics start
-#' @importFrom BiocGenerics width
-#' @importFrom Biostrings BStringSet
-#' @importFrom Biostrings encoding
-#' @importFrom Biostrings letterFrequency
-#' @importFrom Biostrings quality
-#' @importFrom Biostrings readDNAStringSet
+
+
 #' @importFrom DT DTOutput
 #' @importFrom DT renderDT
-#' @importFrom HTSFilter HTSFilter
 #' @importFrom Hmisc rcorr
 #' @importFrom R.devices capturePlot
 #' @importFrom R.devices eps
-#' @importFrom Rfastp catfastq
-#' @importFrom Rsamtools BamFile
-#' @importFrom Rsamtools ScanBamParam
-#' @importFrom Rsamtools filterBam
-#' @importFrom Rsamtools indexBam
-#' @importFrom Rsamtools scanBam
-#' @importFrom Rsamtools scanBamFlag
-#' @importFrom Rsamtools scanBamWhat
-#' @importFrom Rsamtools sortBam
-#' @importFrom Rsubread buildindex
-#' @importFrom Rsubread featureCounts
-#' @importFrom Rsubread subjunc
-#' @importFrom S4Vectors FilterRules
-#' @importFrom ShortRead FastqSampler
-#' @importFrom ShortRead FastqStreamer
-#' @importFrom ShortRead ShortReadQ
-#' @importFrom ShortRead alphabetByCycle
-#' @importFrom ShortRead countFastq
-#' @importFrom ShortRead encoding
-#' @importFrom ShortRead narrow
-#' @importFrom ShortRead sread
-#' @importFrom ShortRead trimEnds
-#' @importFrom ShortRead trimLRPatterns
-#' @importFrom ShortRead trimTailw
-#' @importFrom ShortRead width
-#' @importFrom ShortRead writeFastq
-#' @importFrom ShortRead yield
 #' @importFrom UpSetR upset
-#' @importFrom XVector open_input_files
 #' @importFrom bigtabulate bigtable
 #' @importFrom bsicons bs_icon
 #' @import bslib
@@ -59,19 +24,6 @@
 #' @importFrom dplyr left_join
 #' @importFrom dplyr rename
 #' @importFrom dplyr select
-#' @importFrom edgeR cpm
-#' @importFrom edgeR estimateDisp
-#' @importFrom edgeR exactTest
-#' @importFrom edgeR filterByExpr
-#' @importFrom edgeR glmFit
-#' @importFrom edgeR glmLRT
-#' @importFrom edgeR glmQLFTest
-#' @importFrom edgeR glmQLFit
-#' @importFrom edgeR normLibSizes
-#' @importFrom edgeR plotBCV
-#' @importFrom edgeR plotQLDisp
-#' @importFrom edgeR readDGE
-#' @importFrom edgeR topTags
 #' @importFrom fs path_home
 #' @importFrom fs path_temp
 #' @import ggplot2
@@ -92,8 +44,6 @@
 #' @importFrom htmltools strong
 #' @importFrom htmltools tagList
 #' @importFrom htmltools tags
-#' @importFrom limma makeContrasts
-#' @importFrom limma plotMDS
 #' @importFrom magrittr '%>%'
 #' @importFrom matrixStats product
 #' @importFrom memuse Sys.meminfo
@@ -113,7 +63,6 @@
 #' @importFrom rintrojs introBox
 #' @importFrom rintrojs introjs
 #' @importFrom rintrojs introjsUI
-#' @importFrom rtracklayer import
 #' @importFrom seqinr read.fasta
 #' @importFrom seqinr write.fasta
 #' @import shiny
@@ -159,7 +108,6 @@
 #' @importFrom grDevices dev.off
 #' @importFrom stats median
 #' @importFrom utils head write.table
-#' @importFrom S4Vectors isEmpty
 #' @importFrom shiny addResourcePath
 #' @export inDAGO
 #' @return No return value, called for side effects
@@ -167,6 +115,29 @@
 
 
 inDAGO <- function(){
+
+  # check the necessary bioconductor packages
+  needed <- c(
+    "BiocManager", "XVector", "ShortRead", "S4Vectors", "rtracklayer",
+    "Rsubread", "Rsamtools", "Rfastp", "limma", "HTSFilter",
+    "edgeR", "Biostrings", "BiocGenerics"
+  )
+
+  ## check
+  missing <- needed[!vapply(needed, requireNamespace, quietly = TRUE, FUN.VALUE = FALSE)]
+
+  if (length(missing)) {
+    msg <- paste0(
+      "The following packages are not installed: ",
+      paste(missing, collapse = ", "), ".\n",
+      "To enable all the features of inDAGO install with:\n",
+      "  if (!requireNamespace('BiocManager', quietly=TRUE))\n",
+      "    install.packages('BiocManager')\n",
+      "  BiocManager::install(c(",
+      paste0("\"", missing, "\"", collapse = ", "), "))\n"
+    )
+    stop(msg) # check the necessary Bioconductor packages
+  }
 
   shiny::addResourcePath(
     prefix = "inDAGO",

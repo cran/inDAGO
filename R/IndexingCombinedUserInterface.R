@@ -100,26 +100,13 @@ IndexingCombinedUserInterface <- function(id) {
                     ), #close accordion panel
                     bslib::accordion_panel(
                         "ADVANCED OPTIONS", icon = bsicons::bs_icon("sliders"),
-                        ## checkbox
-                        shiny::fluidRow(htmltools::tags$hr(), shiny::column(width = 12,shiny::splitLayout(cellWidths = c("60%", "30%", "20%"),
-                                                                                                          htmltools::h5("Split index"),
-                                                                                                          shiny::checkboxInput(
-                                                                              inputId = ns("CombIndexActiveSplit"),
-                                                                              label = "On/Off",
-                                                                              value = FALSE
-                                                                          ),
-                                                                          bslib::tooltip(
-                                                                              bsicons::bs_icon("question-circle"),
-                                                                              "Check the box to activate 'Split index' option. 'Off' by default",
-                                                                              placement = "right")))), #chiude fluidRow
-                        ## conditional panel
-                        shiny::conditionalPanel(
-                            condition = "input.CombIndexActiveSplit == '1'",
-                            ns = ns,
+                        shiny::fluidRow(shiny::column(12,align="center",
+                                                      htmltools::tags$hr(htmltools::h5("Split index")),
+                                                      htmltools::br())),
                             ## split index
                             shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                                         shiny::radioButtons(inputId = ns("IndexCombSplitIndex"),
-                                                                                label = "Split index",
+                                                                                label = "Split_index",
                                                                                 choices = c("TRUE", "FALSE"), selected = "FALSE"),
                                                                                 bslib::tooltip(
                                                                                     bsicons::bs_icon("question-circle"),
@@ -144,8 +131,7 @@ IndexingCombinedUserInterface <- function(id) {
                                                                            placement = "right"
                                                                        )
                                 ))) #close fluidrow
-                            ) #close shinyjs
-                        ), #close conditional panel
+                            ), #close shinyjs
                         # Miscellaneous section header
                         shiny::fluidRow(shiny::column(12,align="center",
                                                       htmltools::tags$hr(htmltools::h5("Miscellaneous")),
@@ -153,7 +139,7 @@ IndexingCombinedUserInterface <- function(id) {
                         ## gapped index
                         shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                                     shiny::radioButtons(inputId = ns("IndexingGappedComb"),
-                                                                            label = "gapped_index",
+                                                                            label = "Gapped_index",
                                                                             choices = c("TRUE", "FALSE"), selected = "FALSE"),
                                                                             bslib::tooltip(
                                                                                 bsicons::bs_icon("question-circle"),
@@ -164,7 +150,7 @@ IndexingCombinedUserInterface <- function(id) {
                         ## TH subread
                         shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                                     shiny::numericInput(inputId = ns("CombRipetitiveSubreads"),
-                                                                            label = "Highly repetitive subreads",
+                                                                            label = "Highly_repetitive_subreads",
                                                                             value = 100),
                                                                             bslib::tooltip(
                                                                                 bsicons::bs_icon("question-circle"),

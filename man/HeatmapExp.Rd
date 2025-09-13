@@ -12,7 +12,8 @@ HeatmapExp(
   cutree_cols,
   cluster,
   show_names,
-  NumGenes
+  NumGenes,
+  main
 )
 }
 \arguments{
@@ -31,6 +32,8 @@ HeatmapExp(
 \item{show_names}{Character. One of "both", "row", "column", or "none" to show row/col names.}
 
 \item{NumGenes}{Integer. Number of top-variance genes to include in the heatmap.}
+
+\item{main}{Character. The plot title}
 }
 \value{
 A "pheatmap" object containing the heatmap and clustering information.

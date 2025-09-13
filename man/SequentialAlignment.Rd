@@ -13,12 +13,10 @@ SequentialAlignment(
   outBam1,
   outBam2,
   threads,
-  outFormat,
   phredScore,
   maxExtractedSubreads,
   consensusVote,
   mismatchMax,
-  uniqueOnly,
   maxMultiMapped,
   indelLength,
   fragmentMinLength,
@@ -48,8 +46,6 @@ SequentialAlignment(
 
 \item{threads}{processes}
 
-\item{outFormat}{BAM or SAM}
-
 \item{phredScore}{quality score}
 
 \item{maxExtractedSubreads}{number of subreads}
@@ -57,8 +53,6 @@ SequentialAlignment(
 \item{consensusVote}{consensus}
 
 \item{mismatchMax}{mismatch}
-
-\item{uniqueOnly}{no multimapping}
 
 \item{maxMultiMapped}{multimapping}
 

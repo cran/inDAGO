@@ -186,7 +186,7 @@ mappingBulkServerLogic <- function(id) {
                     maxExtractedSubreads = base::as.integer(input$MappingNumberSubreadsBulk),
                     consensusVote = base::as.integer(input$MappingConsensusThresholdBulk),
                     mismatchMax = base::as.integer(input$MappingMaxMismatchBulk),
-                    uniqueOnly = as.logical(input$MappingUniqueOnlyBulk),
+                    # uniqueOnly = as.logical(input$MappingUniqueOnlyBulk),
                     maxMultiMapped = base::as.integer(input$MappingMultiMapMaxBulk),
                     indelLength = base::as.integer(input$MappingIndelLengthBulk),
                     fragmentMinLength = base::as.integer(input$MappingMinFragLengthBulk),
@@ -216,7 +216,7 @@ mappingBulkServerLogic <- function(id) {
                     base::cat("Genome mapping was killed!")
                 })
             }
-            shiny::showNotification(paste("Genome indexing process has been killed!"),
+            shiny::showNotification(paste("Genome mapping process has been killed!"),
                              duration = 10, type = "warning")
         })
         ## reassuring table

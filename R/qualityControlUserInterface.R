@@ -115,7 +115,7 @@ qualityControlUserInterface <- function(id) {
             ## sequence sampling
             shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                    shiny::numericInput(inputId = nsQuality("SubsetFastqQuality"),
-                                                                label = "Sampling raw reads",
+                                                                label = "Sampling_raw_reads",
                                                                 value = 1000000, min = 1, step = 1),
                                                    bslib::tooltip(
                                                      bsicons::bs_icon("question-circle"),

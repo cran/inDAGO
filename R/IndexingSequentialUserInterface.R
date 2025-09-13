@@ -88,26 +88,13 @@ IndexingSequentialUserInterface <- function(id) {
           ), #close accordion_panel
           bslib::accordion_panel(
             "ADVANCED OPTIONS", icon = bsicons::bs_icon("sliders"),
-            ## checkbox
-            shiny::fluidRow(htmltools::tags$hr(), shiny::column(width = 12,shiny::splitLayout(cellWidths = c("60%", "30%", "20%"),
-                                                                                              htmltools::h5("Split index"),
-                                                              shiny::checkboxInput(
-                                                                inputId = nsIndSeq("SeqIndexActiveSplit"),
-                                                                label = "On/Off",
-                                                                value = FALSE
-                                                              ),
-                                                              bslib::tooltip(
-                                                                bsicons::bs_icon("question-circle"),
-                                                                "Checks the box to activate 'Split index' option. 'Off' by default",
-                                                                placement = "right")))), # close fluidRow
-
-            ## conditional panel
-            shiny::conditionalPanel(condition = "input.SeqIndexActiveSplit == '1'",
-                             ns = nsIndSeq,
+            shiny::fluidRow(shiny::column(12,align="center",
+                                          htmltools::tags$hr(htmltools::h5("Split index")),
+                                          htmltools::br())),
                              ## split index
                              shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                     shiny::radioButtons(inputId = nsIndSeq("IndexSeqSplitIndex"),
-                                                                                 label = "Split index",
+                                                                                 label = "Split_index",
                                                                                  choices = c("TRUE", "FALSE"), selected = "FALSE"),
                                                                     bslib::tooltip(
                                                                       bsicons::bs_icon("question-circle"),
@@ -119,7 +106,7 @@ IndexingSequentialUserInterface <- function(id) {
                              shinyjs::disabled(
                                shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                                            shiny::sliderInput(inputId = nsIndSeq("IndexingMemory"),
-                                                                                  label = "Index-block size",
+                                                                                  label = "Index_block_size",
                                                                                   value = (base::round(base::as.numeric(base::sub(pattern = " GiB", replacement = "", x = memuse::Sys.meminfo()$totalram)) * ((1024^3)/(1000^3))) - 4) * 1000,
                                                                                   min = 1000,
                                                                                   max = base::round(base::as.numeric(base::sub(pattern = " GiB", replacement = "", x = memuse::Sys.meminfo()$totalram)) * ((1024^3)/(1000^2))),
@@ -131,8 +118,7 @@ IndexingSequentialUserInterface <- function(id) {
                                                                         placement = "right"
                                                                       )
                                ))) #close fluidrow
-                             ) #close shinyjs
-            ), #close conditional_panel
+                             ), #close shinyjs
             # Miscellaneous section header
             shiny::fluidRow(shiny::column(12,align="center",
                             htmltools::tags$hr(htmltools::h5("Miscellaneous")),
@@ -140,7 +126,7 @@ IndexingSequentialUserInterface <- function(id) {
             ### gapped index
             shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                    shiny::radioButtons(inputId = nsIndSeq("IndexingGapped"),
-                                                                label = "Gapped index",
+                                                                label = "Gapped_index",
                                                                 choices = c("TRUE", "FALSE"), selected = "FALSE"),
                                                    bslib::tooltip(
                                                      bsicons::bs_icon("question-circle"),

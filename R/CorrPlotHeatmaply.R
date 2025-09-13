@@ -14,6 +14,7 @@
 #' @param scale Character. Scaling mode for the heatmap: "row", "column", or "none".
 #' @param show_names Character. One of "both", "row", "column", or "none" to display row/column labels.
 #' @param NumGenes Integer. Number of top-variance genes to include in the correlation.
+#' @param main Character. The plot title
 #'
 #' @return A Plotly object (heatmaply) representing the interactive correlation heatmap.
 #'
@@ -24,7 +25,7 @@
 #' 4. Render an interactive heatmap with "heatmaply::heatmaply_cor()", passing in color,
 #'    clustering, scaling, tick-label visibility, and point size based on -log10(p-value).
 #'
-CorrPlotHeatmaply <- function(x, Color, type, cluster, scale, show_names, NumGenes){
+CorrPlotHeatmaply <- function(x, Color, type, cluster, scale, show_names, NumGenes, main){
 
   # 'x' is the logcounts matrix from edgeR::cpm
   # Generate a color palette for the heatmap using the specified Color
@@ -88,7 +89,7 @@ CorrPlotHeatmaply <- function(x, Color, type, cluster, scale, show_names, NumGen
     revC = TRUE,                        # Reverse the order of the columns
     showticklabels = showticklabels,    # Whether to show tick labels
     node_type = "scatter",              # Type of plot for points (scatter plot)
-
+    main = main,                         # plot title
     # Point size based on the negative logarithm of p-values for better visualization
     point_size_mat = -log10(p),
     point_size_name = "-log10(p-value)", # Legend name for point size

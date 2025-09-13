@@ -62,26 +62,13 @@ IndexingBulkUserInterface <- function(id) {
                     ), # close accordion_panel
                 bslib::accordion_panel(
                         "ADVANCED OPTIONS", icon = bsicons::bs_icon("sliders"),
-                        ## checkbox
-                        shiny::fluidRow(htmltools::tags$hr(), shiny::column(width = 12,shiny::splitLayout(cellWidths = c("60%", "30%", "20%"),
-                                                                                                          htmltools::h5("Split index"),
-                                                                                                          shiny::checkboxInput(
-                                                                              inputId = nsIndBulk("BulkIndexActiveSplit"),
-                                                                              label = "On/Off",
-                                                                              value = FALSE
-                                                                          ),
-                                                                          bslib::tooltip(
-                                                                            bsicons::bs_icon("question-circle"),
-                                                                              "Check the box to activate 'Split index' option. 'Off' by default",
-                                                                              placement = "right")))), # close fluidRow
-                        ## conditional panel
-                        shiny::conditionalPanel(
-                            condition = "input.BulkIndexActiveSplit == '1'",
-                            ns = nsIndBulk,
-                            ## split index
+                        shiny::fluidRow(shiny::column(12,align="center",
+                                                      htmltools::tags$hr(htmltools::h5("Split index")),
+                                                      htmltools::br())),
+                        ## split index
                             shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                                  shiny::radioButtons(inputId = nsIndBulk("IndexBulkSplitIndex"),
-                                                                                label = "Split index",
+                                                                                label = "Split_index",
                                                                                 choices = c("TRUE", "FALSE"), selected = "FALSE"),
                                                                                 bslib::tooltip(
                                                                                   bsicons::bs_icon("question-circle"),
@@ -93,7 +80,7 @@ IndexingBulkUserInterface <- function(id) {
                             shinyjs::disabled(
                               shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                                           shiny::sliderInput(inputId = nsIndBulk("IndexingMemoryBulk"),
-                                                                                   label = "Index-block size",
+                                                                                   label = "Index_block_size",
                                                                                    value = (base::round(base::as.numeric(base::sub(pattern = " GiB", replacement = "", x = memuse::Sys.meminfo()$totalram)) * ((1024^3)/(1000^3))) - 4) * 1000,
                                                                                    min = 1000,
                                                                                    max = base::round(base::as.numeric(base::sub(pattern = " GiB", replacement = "", x = memuse::Sys.meminfo()$totalram)) * ((1024^3)/(1000^2))),
@@ -107,8 +94,7 @@ IndexingBulkUserInterface <- function(id) {
                                                                            placement = "right"
                                                                        )
                                 ))) # close fluidrow
-                            ) # close shinyjs
-                        ), # close conditional_panel
+                            ), # close shinyjs
                         # Miscellaneous section header
                         shiny::fluidRow(shiny::column(12,align="center",
                                                       htmltools::tags$hr(htmltools::h5("Miscellaneous")),
@@ -116,7 +102,7 @@ IndexingBulkUserInterface <- function(id) {
                         ## gapped index
                         shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                                     shiny::radioButtons(nsIndBulk("IndexingGappedBulk"),
-                                                                            label = "Gapped Index",
+                                                                            label = "Gapped_Index",
                                                                             choices = c("TRUE", "FALSE"), selected = "FALSE"),
                                                                             bslib::tooltip(
                                                                               bsicons::bs_icon("question-circle"),
@@ -127,7 +113,7 @@ IndexingBulkUserInterface <- function(id) {
                         ## TH subread
                         shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                                     shiny::numericInput(nsIndBulk("BulkRipetitiveSubreads"),
-                                                                            label = "Highly repetitive subreads",
+                                                                            label = "Highly_repetitive_subreads",
                                                                             value = 100),
                                                                             bslib::tooltip(
                                                                               bsicons::bs_icon("question-circle"),
@@ -154,7 +140,7 @@ IndexingBulkUserInterface <- function(id) {
         ), # close sidebar
         ##### MAIN PANEL #####
       shinyWidgets::dropdownButton(
-            nsIndBulk("IndexingBulkMydropdown"),
+        inputId = nsIndBulk("IndexingBulkMydropdown"),
             label = "Info",
             size = "sm",
             status = "info",

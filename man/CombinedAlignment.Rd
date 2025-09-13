@@ -2,7 +2,7 @@
 % Please edit documentation in R/CombinedAlignment.R
 \name{CombinedAlignment}
 \alias{CombinedAlignment}
-\title{Title}
+\title{Combined alignment for dual RNA-seq}
 \usage{
 CombinedAlignment(
   lalista,
@@ -11,12 +11,10 @@ CombinedAlignment(
   GenomeConcIndex,
   outBam,
   threads,
-  outFormat,
   phredScore,
   maxExtractedSubreads,
   consensusVote,
   mismatchMax,
-  uniqueOnly,
   maxMultiMapped,
   indelLength,
   fragmentMinLength,
@@ -42,8 +40,6 @@ CombinedAlignment(
 
 \item{threads}{processes}
 
-\item{outFormat}{BAM or SAM}
-
 \item{phredScore}{quality score}
 
 \item{maxExtractedSubreads}{number of subreads}
@@ -51,8 +47,6 @@ CombinedAlignment(
 \item{consensusVote}{consensus}
 
 \item{mismatchMax}{mismatch}
-
-\item{uniqueOnly}{no multimapping}
 
 \item{maxMultiMapped}{multimapping}
 
@@ -75,5 +69,5 @@ CombinedAlignment(
 \item{readsAlignedBlock}{chunks}
 }
 \description{
-Title
+Combined alignment for dual RNA-seq
 }

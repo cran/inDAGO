@@ -68,14 +68,16 @@ mdsPlot <- function(x, Sample, Group, title, palette, maxOverlaps, sizeLabel, to
     # Set the title of the plot with the provided title argument
     ggplot2::ggtitle(title) +
 
+    # Use the minimal theme for a minimalistic theme with no background annotations
+    ggplot2::theme_minimal() +
+
     # Center and bold the title
     ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5, face = "bold")) +
 
     # Apply the specified color palette to groups using the paletteer package
-    paletteer::scale_color_paletteer_d(palette) +
+    paletteer::scale_color_paletteer_d(palette)
 
-    # Use the minimal theme for a minimalistic theme with no background annotations
-    ggplot2::theme_minimal()
+
 
   return(plot)
 

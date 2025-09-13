@@ -92,7 +92,7 @@ mappingCombinedServerLogic <- function(id) {
         ## useful objects
         outmapseq <- shiny::reactiveValues()
         start_time <- shiny::reactiveVal()
-        dirMappingTempFilePathSequential <- shiny::reactiveVal()
+        dirMappingTempFilePathCombined <- shiny::reactiveVal()
         ## SLIDER INPUT UPDATING
         ## update slider input for parallel workers
         shiny::observeEvent(eventExpr = input$MappingThreadsCombined, {
@@ -155,15 +155,15 @@ mappingCombinedServerLogic <- function(id) {
             if (base::is.integer(input$MappingTemporaryFolderCombined) == FALSE){
                 dir <- shinyFiles::parseDirPath(volumes, input$MappingTemporaryFolderCombined)
                 ## Set the value by calling with an argument
-                dirMappingTempFilePathSequential(dir)
+                dirMappingTempFilePathCombined(dir)
             } else {
                 if (base::file.exists(base::file.path(fs::path_temp(),"TempDirSum_3738"))){
                     dir <- base::file.path(fs::path_temp(),"TempDirSum_3738")
-                    dirMappingTempFilePathSequential(dir)
+                    dirMappingTempFilePathCombined(dir)
                 } else {
                     dir.create(base::file.path(fs::path_temp(),"TempDirSum_3738"))
                     dir <- base::file.path(fs::path_temp(),"TempDirSum_3738")
-                    dirMappingTempFilePathSequential(dir)
+                    dirMappingTempFilePathCombined(dir)
                 }
             }
             ## start time to monitor execution
@@ -197,12 +197,12 @@ mappingCombinedServerLogic <- function(id) {
                     outBam = OutputPath,
                     nodes = input$MappingProcessCombined,
                     threads = base::as.integer(input$MappingThreadsCombined),
-                    outFormat = base::as.character(input$MappingFormatCombined),
+                    # outFormat = base::as.character(input$MappingFormatCombined),
                     phredScore = base::as.integer(input$MappingCombPhredScore),
                     maxExtractedSubreads = base::as.integer(input$MappingNumberSubreadsCombined),
                     consensusVote = base::as.integer(input$MappingConsensusThresholdCombined),
                     mismatchMax = base::as.integer(input$MappingMaxMismatchCombined),
-                    uniqueOnly = base::as.logical(input$MappingUniqueOnlyCombined),
+                    # uniqueOnly = base::as.logical(input$MappingUniqueOnlyCombined),
                     maxMultiMapped = base::as.integer(input$MappingMultiMapMaxCombined),
                     indelLength = base::as.integer(input$MappingIndelLengthCombined),
                     fragmentMinLength = base::as.integer(input$MappingMinFragLengthCombined),
@@ -212,7 +212,7 @@ mappingCombinedServerLogic <- function(id) {
                     coordinatesSorting = base::as.logical(input$MappingSortByCoordinatesCombined),
                     allJunctions = base::as.logical(input$MappingAllJunctionsCombined),
                     readsAlignedBlock = base::as.integer(input$SubsetBamCombined),
-                    tempfolder = base::file.path(dirMappingTempFilePathSequential())
+                    tempfolder = base::file.path(dirMappingTempFilePathCombined())
                 ) ## close argument list
             ) ## close callr:r_bg
         }) ## close observe event "RUN-MAPPING"
@@ -225,8 +225,8 @@ mappingCombinedServerLogic <- function(id) {
                 outmapseq$mapping$kill()
             }
             ## delete temporary folder
-            if (base::file.exists(dirMappingTempFilePathSequential()) && base::is.integer(input$MappingTemporaryFolderCombined) == TRUE) {
-                base::unlink(dirMappingTempFilePathSequential(), recursive = TRUE)
+            if (base::file.exists(dirMappingTempFilePathCombined()) && base::is.integer(input$MappingTemporaryFolderCombined) == TRUE) {
+                base::unlink(dirMappingTempFilePathCombined(), recursive = TRUE)
             }
 
             ## reassuring message
@@ -235,7 +235,7 @@ mappingCombinedServerLogic <- function(id) {
                     base::cat("Genome mapping was killed!")
                 })
             }
-            shiny::showNotification(base::paste("Genome indexing process has been killed!"),
+            shiny::showNotification(base::paste("Genome mapping process has been killed!"),
                              duration = 10, type = "warning")
         }) ## close observeEvent killing analysis
         ## reassuring table

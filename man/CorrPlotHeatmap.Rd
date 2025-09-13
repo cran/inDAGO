@@ -15,7 +15,8 @@ CorrPlotHeatmap(
   cutree_cols,
   cluster,
   show_names,
-  NumGenes
+  NumGenes,
+  main
 )
 }
 \arguments{
@@ -40,6 +41,8 @@ CorrPlotHeatmap(
 \item{show_names}{Character. One of "both", "row", "column", or "none" to display row/column labels.}
 
 \item{NumGenes}{Integer. Number of top-variance genes to include in the correlation.}
+
+\item{main}{Character. The plot title}
 }
 \value{
 A "pheatmap" object representing the correlation heatmap with clustering.

@@ -11,6 +11,7 @@
 #' @param cluster Character or logical. Clustering option for dendrogram: "both", "row", "column", or "none".
 #' @param show_names Character. One of "both", "row", "column", or "none" to display row/column labels.
 #' @param NumGenes Integer. Number of top-variance genes to include in the heatmap.
+#' @param main Character. The plot title
 #'
 #' @return A Plotly object (heatmaply) representing the interactive heatmap.
 #'
@@ -20,7 +21,7 @@
 #' 3. Generate a temporary static heatmap with pheatmap to extract dendrograms.
 #' 4. Render an interactive heatmap with heatmaply::heatmaply().
 #'
-HeatmapExpPlotly <- function(x, ColorPanel, scale, cluster, show_names, NumGenes){
+HeatmapExpPlotly <- function(x, ColorPanel, scale, cluster, show_names, NumGenes, main){
 
 
   # 'x' is the logcounts matrix from edgeR::cpm
@@ -69,7 +70,8 @@ HeatmapExpPlotly <- function(x, ColorPanel, scale, cluster, show_names, NumGenes
     Colv = phtmap[[2]],                # Column dendrogram (optional)
     revC = TRUE,                       # Reverse the column order if TRUE
     colors = col,                      # Color palette for the heatmap
-    showticklabels = showticklabels    # Control visibility of tick labels
+    showticklabels = showticklabels,   # Control visibility of tick labels
+    main = main                        # plot title
   )
 
   return(plotly)
