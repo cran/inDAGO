@@ -1,4 +1,4 @@
-6eb0166c79d1b48d8724c2c81a66de9d *DESCRIPTION
+a64aec531cd4a0d4b864f3500acd440c *DESCRIPTION
 898d0326f7fdebeae755e4bc279cf1b8 *NAMESPACE
 9407cc634bfa0cb0a7871a3d003f48f9 *R/BaseAverageQualityPlot.R
 d8a17f4ef0e67e7bbd7dd70841b88ca6 *R/BaseAverageQualityPlotly.R
@@ -6,7 +6,7 @@ a89b3cc53052970456c1519432d2c75b *R/BaseCompositionAreaChartPlot.R
 17eb54a6a8cfb4a767d6d10080d6afbe *R/BaseCompositionLinePlot.R
 f5556d60865da7793e5d028e8a01182b *R/BaseQualityBoxplotPlot.R
 6d151b12bb1915ccd7f5a0456ce90e87 *R/BulkAlignment.R
-87545eead35190f2d4e830ea725e64e8 *R/CombinedAlignment.R
+3d16480c37582b6a00c621b4d6c90b39 *R/CombinedAlignment.R
 673cf36de685e8557af1484800bd16ca *R/CorrPlotHeatmap.R
 a4795b83c96e9fc7718fe51cb2c5a24c *R/CorrPlotHeatmaply.R
 bd6135a083b63ce4a1dde8cddf81038f *R/DEGsServerLogic.R
