@@ -367,15 +367,26 @@ SequentialAlignment <- function(lalista, nodes,
           prefix, "FastqR1unproperly_", sampleBasename, "_Unmapped_R1.fq.gz", sep = "")
       )
     )
-    Rfastp::catfastq(
-      output =
+    #### writing resulting R1
+    # inizialization
+    file.create(
         file.path(
-          outputBam, paste(
-            prefix, "R1_", sampleBasename, "_unmapped.fastq.gz", sep = "")),
-      inputFiles = erreUno,
-      append = FALSE,
-      paired = FALSE
+            outputBam, paste(
+                prefix, "R1_", sampleBasename, "_unmapped.fastq.gz", sep = ""))
     )
+    outputR1_fastq <- 
+        file.path(
+            outputBam, paste(
+                prefix, "R1_", sampleBasename, "_unmapped.fastq.gz", sep = ""))
+    ###
+    for (file in erreUno) {
+        fq = ShortRead::readFastq(file)
+        ShortRead::writeFasta(object = fq, 
+                              file = outputR1_fastq,
+                              mode = "a",
+                              compress = TRUE)
+    }
+    
     ## UNION R2
     erreDue <- c(
       file.path(
@@ -390,13 +401,26 @@ SequentialAlignment <- function(lalista, nodes,
       file.path(temporarySource, paste(
         prefix, "FastqR2unproperly_", sampleBasename, "_Unmapped_R2.fq.gz", sep = ""))
     )
-    Rfastp::catfastq(
-      output = file.path(
-        outputBam, paste(
-          prefix, "R2_", sampleBasename, "_unmapped.fastq.gz", sep = "")),
-      inputFiles = erreDue,
-      append = FALSE,
-      paired = FALSE)
+    #### writing resulting R2
+    # inizialization
+    file.create(
+        file.path(
+            outputBam, paste(
+                prefix, "R2_", sampleBasename, "_unmapped.fastq.gz", sep = ""))
+    )
+    outputR2_fastq <- 
+        file.path(
+            outputBam, paste(
+                prefix, "R2_", sampleBasename, "_unmapped.fastq.gz", sep = ""))
+    ###
+    for (file in erreDue) {
+        fq = ShortRead::readFastq(file)
+        ShortRead::writeFasta(object = fq, 
+                              file = outputR2_fastq,
+                              mode = "a",
+                              compress = TRUE)
+    }   
+    
     ## CLEAN BAM FROM UNMAPPED
     ## setting filter parameters
     parameters <- Rsamtools::ScanBamParam(

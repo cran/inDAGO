@@ -16,7 +16,6 @@ BulkAlignment(
   maxExtractedSubreads,
   consensusVote,
   mismatchMax,
-  uniqueOnly,
   maxMultiMapped,
   indelLength,
   fragmentMinLength,
@@ -50,8 +49,6 @@ BulkAlignment(
 \item{consensusVote}{consensus}
 
 \item{mismatchMax}{mismatch}
-
-\item{uniqueOnly}{no multimapping}
 
 \item{maxMultiMapped}{multimapping}
 

@@ -140,47 +140,6 @@ CombinedAlignment <- function(lalista,
       }
     }
 
-    # make_fastq_writer_disk <- function(outFile, written_file, normalize = TRUE) {
-    #   first_call <- TRUE
-    #   function(sb_env, idxs) {
-    #     if (length(idxs) == 0) return(invisible(0L))
-    #     idxs <- sort(unique(as.integer(idxs)))
-    #     if (length(idxs) == 0) return(invisible(0L))
-    #
-    #     qn <- as.character(sb_env$qname[idxs])
-    #
-    #     # keep only first occurrence within the chunk (by normalized qname)
-    #     keep_first <- !duplicated(qn)
-    #     if (!all(keep_first)) {
-    #       idxs <- idxs[keep_first]
-    #       qn <- qn[keep_first]
-    #     }
-    #     if (length(idxs) == 0) return(invisible(0L))
-    #
-    #     present_mask <- disk_contains(written_file, qn)
-    #     new_mask <- !present_mask
-    #     if (!any(new_mask)) return(invisible(0L))
-    #
-    #     idxs_new <- idxs[new_mask]
-    #     qn_new_norm <- unique(qn[new_mask])
-    #
-    #     SRQ <- ShortRead::ShortReadQ(
-    #       sread   = sb_env$seq[idxs_new],
-    #       quality = sb_env$qual[idxs_new],
-    #       id      = Biostrings::BStringSet(sb_env$qname[idxs_new]) # preserve original header
-    #     )
-    #
-    #     mode <- if (first_call) "w" else "a"
-    #     ShortRead::writeFastq(SRQ, file = outFile, mode = mode, compress = TRUE)
-    #     first_call <<- FALSE
-    #
-    #     # append normalized qnames to index
-    #     write(qn_new_norm, file = written_file, append = TRUE)
-    #
-    #     invisible(length(idxs_new))
-    #   }
-    # }
-
 
     # Create per-mate writers
     writer_R1_global <- make_fastq_writer_disk(fastq_R1_Unmapped, written_file_R1)

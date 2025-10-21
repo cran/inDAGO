@@ -225,7 +225,6 @@ mappingSequentialServerLogic <- function(id) {
                     maxExtractedSubreads = base::as.integer(input$MappingNumberSubreadsSequential),
                     consensusVote = base::as.integer(input$MappingConsensusThresholdSequential),
                     mismatchMax = base::as.integer(input$MappingMaxMismatchSequential),
-                    # uniqueOnly = base::as.logical(input$MappingUniqueOnlySequential),
                     maxMultiMapped = base::as.integer(input$MappingMultiMapMaxSequential),
                     indelLength = base::as.integer(input$MappingIndelLengthSequential),
                     fragmentMinLength = base::as.integer(input$MappingMinFragLengthSequential),

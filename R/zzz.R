@@ -4,13 +4,13 @@
   ## list of package to check
   needed <- c(
     "BiocManager", "XVector", "ShortRead", "S4Vectors", "rtracklayer",
-    "Rsubread", "Rsamtools", "Rfastp", "limma", "HTSFilter",
+    "Rsubread", "Rsamtools", "limma", "HTSFilter",
     "edgeR", "Biostrings", "BiocGenerics"
   )
-  
+
   ## check
   missing <- needed[!vapply(needed, requireNamespace, quietly = TRUE, FUN.VALUE = FALSE)]
-  
+
   if (length(missing)) {
     msg <- paste0(
       "The following packages are not installed: ",

@@ -186,7 +186,6 @@ mappingBulkServerLogic <- function(id) {
                     maxExtractedSubreads = base::as.integer(input$MappingNumberSubreadsBulk),
                     consensusVote = base::as.integer(input$MappingConsensusThresholdBulk),
                     mismatchMax = base::as.integer(input$MappingMaxMismatchBulk),
-                    # uniqueOnly = as.logical(input$MappingUniqueOnlyBulk),
                     maxMultiMapped = base::as.integer(input$MappingMultiMapMaxBulk),
                     indelLength = base::as.integer(input$MappingIndelLengthBulk),
                     fragmentMinLength = base::as.integer(input$MappingMinFragLengthBulk),

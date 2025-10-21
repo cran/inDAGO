@@ -172,17 +172,6 @@ mappingBulkUserInterface <- function(id) {
                                                                    placement = "right"
                                                                )
                         ))), #close fluidrow
-                        # shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
-                        #                                        shiny::radioButtons(inputId = nsMapBulk("MappingUniqueOnlyBulk"),
-                        #                                                     label = "Discard_multi-mapped",
-                        #                                                     choices = c("TRUE", "FALSE"), selected = "FALSE"),
-                        #                                        bslib::tooltip(
-                        #                                            bsicons::bs_icon("question-circle"),
-                        #                                            "Specify if only uniquely mapped reads should be included in the alignment file (setting TRUE).
-                        #                                                    'FALSE' by default.",
-                        #                                            placement = "right"
-                        #                                        )
-                        # ))), #close fluidrow
                         shiny::fluidRow(shiny::column(width = 12,shiny::splitLayout(cellWidths = c("90%", "10%"),
                                                                         shiny::numericInput(inputId = nsMapBulk("MappingMultiMapMaxBulk"),
                                                                             label = "Max_multi-mapped_reads", min = 1, max = 16, value = 1, step = 1),

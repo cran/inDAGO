@@ -6,7 +6,7 @@
 # * https://r-pkgs.org/testing-design.html#sec-tests-files-overview
 # * https://testthat.r-lib.org/articles/special-files.html
 
-library(testthat)
-library(inDAGO)
+# library("testthat")
+# library("inDAGO")
 
-test_check("inDAGO")
+testthat::test_check("inDAGO")

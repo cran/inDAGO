@@ -11,7 +11,6 @@
 #' @param maxExtractedSubreads number of subreads
 #' @param consensusVote consensus
 #' @param mismatchMax mismatch
-#' @param uniqueOnly no multimapping
 #' @param maxMultiMapped multimapping
 #' @param indelLength indel
 #' @param fragmentMinLength fragment minumum length 
@@ -31,7 +30,6 @@ BulkAlignment <- function(lalista, nodes,
                           maxExtractedSubreads,
                           consensusVote,
                           mismatchMax,
-                          uniqueOnly,
                           maxMultiMapped,
                           indelLength,
                           fragmentMinLength,
@@ -42,7 +40,7 @@ BulkAlignment <- function(lalista, nodes,
                           allJunctions,
                           tempfolder
 ) {
-    ## nested function
+    ## nested 
     ## unmapped extraction
     ## filtering BAM from unmapped
     UnmappedExtraction <- function(
@@ -297,15 +295,26 @@ BulkAlignment <- function(lalista, nodes,
                 temporarySource, paste(
                     prefix, "FastqR1mateMapped2_", sampleBasename, "_Unmapped_R1.fq.gz", sep = ""))
         )
-        Rfastp::catfastq(
-            output = 
-                file.path(
-                    outputBam, paste(
-                        prefix, "R1_", sampleBasename, "_unmapped.fastq.gz", sep = "")),
-            inputFiles = erreUno,
-            append = FALSE,
-            paired = FALSE
+        #### writing resulting R1
+        # inizialization
+        file.create(
+            file.path(
+                outputBam, paste(
+                    prefix, "R1_", sampleBasename, "_unmapped.fastq.gz", sep = ""))
         )
+        outputR1_fastq <- 
+            file.path(
+                outputBam, paste(
+                    prefix, "R1_", sampleBasename, "_unmapped.fastq.gz", sep = ""))
+        ###
+        for (file in erreUno) {
+            fq = ShortRead::readFastq(file)
+            ShortRead::writeFasta(object = fq, 
+                                  file = outputR1_fastq,
+                                  mode = "a",
+                                  compress = TRUE)
+        }
+        
         ## UNION R2
         erreDue <- c(
             file.path(
@@ -318,13 +327,27 @@ BulkAlignment <- function(lalista, nodes,
                 temporarySource, paste(
                     prefix, "FastqR2mateUnmapped2_", sampleBasename, "_Unmapped_R2.fq.gz", sep = ""))
         )
-        Rfastp::catfastq(
-            output = file.path(
+        
+        #### writing resulting R2
+        # inizialization
+        file.create(
+            file.path(
                 outputBam, paste(
-                    prefix, "R2_", sampleBasename, "_unmapped.fastq.gz", sep = "")),
-            inputFiles = erreDue,
-            append = FALSE,
-            paired = FALSE)
+                    prefix, "R2_", sampleBasename, "_unmapped.fastq.gz", sep = ""))
+        )
+        outputR2_fastq <- 
+            file.path(
+                outputBam, paste(
+                    prefix, "R2_", sampleBasename, "_unmapped.fastq.gz", sep = ""))
+        ###
+        for (file in erreDue) {
+            fq = ShortRead::readFastq(file)
+            ShortRead::writeFasta(object = fq, 
+                                  file = outputR2_fastq,
+                                  mode = "a",
+                                  compress = TRUE)
+        }   
+        
         ## FILTER BAM FROM UNMAPPED 
         ## filter parameters
         parameters <- Rsamtools::ScanBamParam(
@@ -366,7 +389,6 @@ BulkAlignment <- function(lalista, nodes,
                                        maxExtractedSubreads,
                                        consensusVote,
                                        mismatchMax,
-                                       uniqueOnly,
                                        maxMultiMapped,
                                        indelLength,
                                        fragmentMinLength,
@@ -406,7 +428,6 @@ BulkAlignment <- function(lalista, nodes,
                                 TH1 = consensusVote,
                                 TH2 = consensusVote,
                                 maxMismatches = mismatchMax,
-                                unique = uniqueOnly,
                                 nBestLocations = maxMultiMapped,
                                 indels = indelLength,
                                 maxFragLength = fragmentMinLength,
@@ -441,7 +462,6 @@ BulkAlignment <- function(lalista, nodes,
                         maxExtractedSubreads,
                         consensusVote,
                         mismatchMax,
-                        uniqueOnly,
                         maxMultiMapped,
                         indelLength,
                         fragmentMinLength,

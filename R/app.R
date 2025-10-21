@@ -6,7 +6,6 @@
 #' This function allows to launch inDAGO Shiny interface.
 
 
-
 #' @importFrom DT DTOutput
 #' @importFrom DT renderDT
 #' @importFrom Hmisc rcorr
@@ -15,7 +14,7 @@
 #' @importFrom UpSetR upset
 #' @importFrom bigtabulate bigtable
 #' @importFrom bsicons bs_icon
-#' @import bslib
+#' @rawNamespace import(bslib, except = font_face)
 #' @importFrom callr r_bg
 #' @importFrom checkmate assert
 #' @importFrom data.table fread
@@ -84,7 +83,6 @@
 #' @importFrom shinyjs hide
 #' @importFrom shinyjs show
 #' @importFrom shinyjs useShinyjs
-#' @importFrom bslib sidebar
 #' @importFrom spsComps shinyCatch
 #' @importFrom stats as.dist
 #' @importFrom stats model.matrix
@@ -107,6 +105,7 @@
 #' @importFrom utils write.csv
 #' @importFrom grDevices dev.off
 #' @importFrom stats median
+#' @import svglite
 #' @importFrom utils head write.table
 #' @importFrom shiny addResourcePath
 #' @export inDAGO
@@ -119,7 +118,7 @@ inDAGO <- function(){
   # check the necessary bioconductor packages
   needed <- c(
     "BiocManager", "XVector", "ShortRead", "S4Vectors", "rtracklayer",
-    "Rsubread", "Rsamtools", "Rfastp", "limma", "HTSFilter",
+    "Rsubread", "Rsamtools", "limma", "HTSFilter",
     "edgeR", "Biostrings", "BiocGenerics"
   )
 

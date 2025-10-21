@@ -1,6 +1,6 @@
 Package: inDAGO
 Title: A GUI for Dual and Bulk RNA-Sequencing Analysis
-Version: 1.0.2
+Version: 1.0.3
 Authors@R: c(
     person("Carmine", "Fruggiero", , "fruggierocarmine3@gmail.com", role = c("aut","cre")),
     person("Gaetano", "Aufiero", , "gaetano.aufiero@gmail.com", role = "aut")
@@ -17,22 +17,22 @@ License: GPL (>= 3)
 URL: https://github.com/inDAGOverse/inDAGO
 BugReports: https://github.com/inDAGOverse/inDAGO/issues
 Encoding: UTF-8
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Imports: bigtabulate, bsicons, bslib, callr, checkmate, data.table,
         dplyr, DT, fs, ggplot2, ggrepel, grDevices, heatmaply, Hmisc,
         htmltools, magrittr, matrixStats, memuse, methods, paletteer,
         parallel, pheatmap, plotly, R.devices, readr, reshape2,
         rintrojs, seqinr, shiny, shinycssloaders, shinyFiles, shinyjs,
-        shinyWidgets, spsComps, stats, tibble, tidyr, tools, upsetjs,
-        UpSetR, utils
+        shinyWidgets, spsComps, stats, svglite, tibble, tidyr, tools,
+        upsetjs, UpSetR, utils
 Suggests: BiocGenerics, BiocManager, Biostrings, edgeR, harrypotter,
-        HTSFilter, limma, oompaBase, palr, Rfastp, Rsamtools, Rsubread,
+        HTSFilter, limma, oompaBase, palr, Rsamtools, Rsubread,
         rtracklayer, S4Vectors, ShortRead, testthat (>= 3.0.0), XVector
 Config/testthat/edition: 3
 NeedsCompilation: no
-Packaged: 2025-09-15 14:23:11 UTC; gaeta
+Packaged: 2025-10-21 13:38:25 UTC; gaeta
 Author: Carmine Fruggiero [aut, cre],
   Gaetano Aufiero [aut]
 Maintainer: Carmine Fruggiero <fruggierocarmine3@gmail.com>
 Repository: CRAN
-Date/Publication: 2025-09-19 07:10:02 UTC
+Date/Publication: 2025-10-21 14:00:02 UTC
